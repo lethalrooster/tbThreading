@@ -11,7 +11,7 @@ mutex cout_mutex;
 
 void print(int n, const string& str) {
     //this_thread::sleep_for(chrono::seconds(n+1));
-
+    
     //Lås cout med ett unique_lock + mutex (som du själv kan låsa upp när t.ex. cout inte behövs längre)
     unique_lock<mutex> unique(cout_mutex);
     cout << str << " ";
@@ -19,8 +19,8 @@ void print(int n, const string& str) {
 
     //låsa cout med en lock_guard + mutex, så att enbart en tråd åt gången kommer åt cout
     //lock_guard frigör mutex:en när den går 'out-of-scope'
-    lock_guard<mutex> guard(cout_mutex);
-    cout << str << " ";
+    /*lock_guard<mutex> guard(cout_mutex);
+    cout << str << " ";*/
 
 
 }
